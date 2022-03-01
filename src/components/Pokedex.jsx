@@ -1,6 +1,7 @@
 import React from 'react'
+import Pokemon from './Pokemon'
 
-const Pokedex = () => {
+const Pokedex = ({ pokemons }) => {
   return (
     <section className='text-gray-400 bg-gray-900 body-font'>
       <div className='container px-5 py-24 mx-auto'>
@@ -9,31 +10,44 @@ const Pokedex = () => {
             Pokédex
           </h1>
           <p className='lg:w-2/3 mx-auto leading-relaxed text-base'>
-            Esta es una Pokédex, se creo utilizando la API de PokéAPI
+            Pokédex creada con la API de{' '}
+            <a
+              target='_blank'
+              className='text-blue-400'
+              href='https://pokeapi.co/'
+              rel='noreferrer'
+            >
+              PokéAPI
+            </a>
+            , esta aplicación esta desarrollada en{' '}
+            <a
+              target='_blank'
+              className='text-blue-400'
+              href='https://es.reactjs.org/'
+              rel='noreferrer'
+            >
+              React
+            </a>
+            , utilizando un framework de CSS llamado{' '}
+            <a
+              target='_blank'
+              className='text-blue-400'
+              href='https://tailwindcss.com/'
+              rel='noreferrer'
+            >
+              Tailwind
+            </a>
+            . La aplicación tiene como objetivo la practica de las tecnologias
+            ya nombradas anteriormente, de igual forma el poder ayudar a la
+            comunidad de Pokémon a que pueda disfrutar de esta App.
           </p>
         </div>
-        <div className='flex flex-wrap -m-4'>
-          <div className='lg:w-1/3 sm:w-1/2 p-4'>
-            <div className='flex relative'>
-              <img
-                alt='gallery'
-                className='absolute inset-0 w-full h-full object-cover object-center'
-                src='https://dummyimage.com/605x365'
-              />
-              <div className='px-8 py-10 relative z-10 w-full border-4 border-gray-800 bg-gray-900 opacity-0 hover:opacity-100'>
-                <h2 className='tracking-widest text-sm title-font font-medium text-indigo-400 mb-1'>
-                  THE SUBTITLE
-                </h2>
-                <h1 className='title-font text-lg font-medium text-white mb-3'>
-                  Holden Caulfield
-                </h1>
-                <p className='leading-relaxed'>
-                  Photo booth fam kinfolk cold-pressed sriracha leggings
-                  jianbing microdosing tousled waistcoat.
-                </p>
-              </div>
-            </div>
-          </div>
+        <div className='grid gap-5 grid-cols-3 items-center justify-center'>
+          {/* ::::::::::CARD:::::::::: */}
+
+          {pokemons.map((pokemon, i) => {
+            return <Pokemon pokemon={pokemon} key={pokemon.name} />
+          })}
         </div>
       </div>
     </section>
